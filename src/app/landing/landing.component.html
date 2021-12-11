@@ -4,26 +4,33 @@
 </div>
 <div>
     <div style="margin-left: 10%; margin-right: 10%;text-align: center;">
-        <input placeholder=": productId" [(ngModel)]="productId" class="form-control" type="text">
-        <input placeholder=": name" [(ngModel)]="name" class="form-control" type="text">
-        <input placeholder=": detail" [(ngModel)]="detail" class="form-control" type="text">
-        <input placeholder=": price" [(ngModel)]="price" class="form-control" type="text">
-        <button (click)="onAdd()" class="btn btn-primary">ตกลง</button>
+        <input style="margin-bottom: 1%;" placeholder=": productId" [(ngModel)]="productId" class="form-control"
+            type="text">
+        <input style="margin-bottom: 1%;" placeholder=": name" [(ngModel)]="name" class="form-control" type="text">
+        <input style="margin-bottom: 1%;" placeholder=": detail" [(ngModel)]="detail" class="form-control" type="text">
+        <input style="margin-bottom: 1%;" placeholder=": price" [(ngModel)]="price" class="form-control" type="text">
+        <div style="color:green;text-align: left;">
+            <h6>หากส่ง productId == 0 จะเป็นการเพิ่มสินค้า</h6>
+            <h6>หากส่ง productId เป็นค่าอื่นเช่น 1,2,3,4... จะเป็นการ update ข้อมูล</h6>
+        </div>
+        <button (click)="onAdd()" class="btn btn-primary btn-lg btn-block">ตกลง</button>
     </div>
     <div style="margin-left: 10%; margin-right: 10%; margin-top: 10%;">
         <table class="table">
             <thead>
                 <tr>
-                    <th>รหัสสินค้า</th>
-                    <th>ชื่อสินค้า</th>
-                    <th>ราคา</th>
+                    <th>productId</th>
+                    <th>name</th>
+                    <th>price</th>
+                    <th>detail</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of productList.reverse()">
+                <tr *ngFor="let product of productList.reverse()"> 
                     <td>{{product['productId']}}</td>
                     <td>{{product['name']}}</td>
                     <td>{{product['price']}}</td>
+                    <td><button class="btn btn-primary" (click)="onDetail(2)">detail</button></td>
                 </tr>
             </tbody>
         </table>

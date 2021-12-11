@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
 import { environment } from 'src/environments/environment';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -12,8 +12,8 @@ import { environment } from 'src/environments/environment';
 export class LandingComponent implements OnInit {
   detail = ""
   name = ""
-  price: number = 0
-  productId: number = 0
+  price: number | undefined;
+  productId: number | undefined;
   //userId = ""
 
   productList = []
@@ -58,5 +58,22 @@ export class LandingComponent implements OnInit {
           this.router.navigate([currentUrl]);
         }
       })
+  }
+  onDetail(productId: number) {
+    console.log(productId);
+    const body = productId
+    this.httpClient
+      .post(`${environment.API_URL}/product/detail`,
+        productId
+      , { headers: { 'Authorization': `Bearer ${this.cookie.get('token')}` } })
+      .subscribe((res: any) => { 
+        console.log(res)
+        let mes = 'productId: ' + res.data.productId+'\n'
+        mes += 'name: ' + res.data.name+'\n'
+        mes += 'price: ' + res.data.price+'\n'
+        mes += 'detail: ' + res.data.detail
+        Swal.fire(mes)
+      })
+    
   }
 }
