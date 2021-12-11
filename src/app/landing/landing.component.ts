@@ -59,21 +59,21 @@ export class LandingComponent implements OnInit {
         }
       })
   }
-  onDetail(productId: number) {
-    console.log(productId);
-    const body = productId
+  onDetail(product: any) {
+    console.log(product);
+    let productId = product.productId
     this.httpClient
       .post(`${environment.API_URL}/product/detail`,
         productId
-      , { headers: { 'Authorization': `Bearer ${this.cookie.get('token')}` } })
-      .subscribe((res: any) => { 
+        , { headers: { 'Authorization': `Bearer ${this.cookie.get('token')}` } })
+      .subscribe((res: any) => {
         console.log(res)
-        let mes = 'productId: ' + res.data.productId+'\n'
-        mes += 'name: ' + res.data.name+'\n'
-        mes += 'price: ' + res.data.price+'\n'
+        let mes = 'productId: ' + res.data.productId + '\n'
+        mes += 'name: ' + res.data.name + '\n'
+        mes += 'price: ' + res.data.price + '\n'
         mes += 'detail: ' + res.data.detail
         Swal.fire(mes)
       })
-    
+
   }
 }
