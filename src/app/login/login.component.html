@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div>
+    <div style="margin-left: 20%; margin-right: 20%; margin-top: 5%;">
+        <div>
+            <div style="text-align: center; margin-bottom: 2%;">
+                <h1>Login</h1>
+            </div>
+            <div style="margin-bottom: 2%;">
+                <h3>Username</h3>
+                <input placeholder=": Username" [(ngModel)]="userName" class="form-control" type="text">
+            </div>
+
+            <div style="margin-bottom: 2%;">
+                <h3>Password</h3>
+                <input placeholder=": Password" [(ngModel)]="passWord" class="form-control" type="text">
+            </div>
+
+            <div *ngIf="isDup" class="alert alert-danger">
+                login ไม่ได้
+            </div>
+
+            <div style="text-align: center; margin-top: 10px;">
+                <button (click)="onRegister()" class="btn btn-primary">ตกลง</button>
+            </div>
+
+        </div>
+    </div>
+</div>

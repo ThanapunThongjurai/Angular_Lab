@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div style="text-align: center; margin-bottom: 2%; margin-top: 3%">
+    <h1>Product Manager</h1>
+</div>
+<div>
+    <div style="margin-left: 10%; margin-right: 10%;text-align: center;">
+        <input placeholder=": productId" [(ngModel)]="productId" class="form-control" type="text">
+        <input placeholder=": name" [(ngModel)]="name" class="form-control" type="text">
+        <input placeholder=": detail" [(ngModel)]="detail" class="form-control" type="text">
+        <input placeholder=": price" [(ngModel)]="price" class="form-control" type="text">
+        <button (click)="onAdd()" class="btn btn-primary">ตกลง</button>
+    </div>
+    <div style="margin-left: 10%; margin-right: 10%; margin-top: 10%;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>รหัสสินค้า</th>
+                    <th>ชื่อสินค้า</th>
+                    <th>ราคา</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of productList.reverse()">
+                    <td>{{product['productId']}}</td>
+                    <td>{{product['name']}}</td>
+                    <td>{{product['price']}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
