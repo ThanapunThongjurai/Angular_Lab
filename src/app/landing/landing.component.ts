@@ -50,6 +50,9 @@ export class LandingComponent implements OnInit {
       }, { headers: { 'Authorization': `Bearer ${this.cookie.get('token')}` } })
       .subscribe((res: any) => {
         console.log(res['status']);
+        Swal.fire(
+          'Success','บันทึกสำเร็จ','success'
+        )
         if (res['status'] == "0") {
           //reload page
           let currentUrl = this.router.url;

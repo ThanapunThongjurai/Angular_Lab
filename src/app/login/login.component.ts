@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -29,9 +30,15 @@ export class LoginComponent implements OnInit {
         if (res['data']['loginStatus'] === "0") {
           this.cookie.put('token', res.data.token)
           console.log(res.data.token)
+          Swal.fire(
+            'Success','เข้าสู่ระบบสำเร็จ','success'
+          )
           this.router.navigate(['/landing'])
         }
         else {
+          Swal.fire(
+            'Error','เข้าสู่ระบบไม่สำเร็จ','error'
+          )
           this.isDup = true;
         }
       })
