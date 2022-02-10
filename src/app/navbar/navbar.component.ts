@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
@@ -20,6 +21,9 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut(){
+    Swal.fire(
+      'Success', 'Logout', 'success'
+    )
     console.log('logout')
     this.cookie.removeAll()
     this.router.navigate(['/login'])
